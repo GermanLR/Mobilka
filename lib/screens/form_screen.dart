@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'wiki_screen.dart'; // <-- ВОТ импорт, который ты просил
 
 class FormScreen extends StatefulWidget {
   const FormScreen({super.key});
@@ -27,10 +28,18 @@ class _FormScreenState extends State<FormScreen> {
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Данные сохранены: $name, $email'),
+          content: Text('Добро пожаловать, $name!'),
           backgroundColor: Colors.blueAccent,
         ),
       );
+
+      // Переход на WikiScreen
+      Future.delayed(const Duration(milliseconds: 500), () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const WikiScreen()),
+        );
+      });
     }
   }
 
@@ -40,7 +49,6 @@ class _FormScreenState extends State<FormScreen> {
       backgroundColor: const Color(0xFFE3F2FF), // нежный голубой фон
       body: Stack(
         children: [
-          // Левый Sonic
           Positioned(
             left: -20,
             bottom: 0,
@@ -53,7 +61,6 @@ class _FormScreenState extends State<FormScreen> {
             ),
           ),
 
-          // Правый Sonic
           Positioned(
             right: -20,
             bottom: 0,
@@ -66,7 +73,6 @@ class _FormScreenState extends State<FormScreen> {
             ),
           ),
 
-          // Основной контент
           SafeArea(
             child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -74,7 +80,6 @@ class _FormScreenState extends State<FormScreen> {
                 children: [
                   const SizedBox(height: 10),
 
-                  // Логотип Sonic Universe
                   Image.asset(
                     'assets/images/sonic_logo.png',
                     height: 120,
@@ -134,7 +139,9 @@ class _FormScreenState extends State<FormScreen> {
                                     ? 'Введите имя'
                                     : null,
                           ),
+
                           const SizedBox(height: 16),
+
                           TextFormField(
                             controller: _emailController,
                             decoration: InputDecoration(
@@ -162,7 +169,9 @@ class _FormScreenState extends State<FormScreen> {
                               return null;
                             },
                           ),
+
                           const SizedBox(height: 24),
+
                           ElevatedButton(
                             onPressed: _submitForm,
                             style: ElevatedButton.styleFrom(

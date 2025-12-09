@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # my_form_app
 
 A new Flutter project.
@@ -18,3 +19,6 @@ samples, guidance on mobile development, and a full API reference.
 =======
 # Mobilka
 >>>>>>> d8003b21e71de87168e61b9628b790a4de165bcc
+=======
+
+>>>>>>> 7c762b50db03f41bc7f6ab68239601c94d32f8e5
